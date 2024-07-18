@@ -1,0 +1,34 @@
+<!-- templates/admin/report_dashboard.html -->
+{% extends "admin/base_site.html" %}
+
+{% block title %}Report Dashboard{% endblock %}
+
+{% block content %}
+    <div id="content" class="dashboard">
+        <h1>Report Dashboard</h1>
+        <div class="app-dashboard">
+            <div class="module">
+                <table class="table table-striped table-bordered">
+                    <tbody>
+                        <tr>
+                            <th scope="row">Stock Count</th>
+                            <td>{{ stock_count }}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Order Count</th>
+                            <td>{{ order_count }}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">User Count</th>
+                            <td>{{ user_count }}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Item Count</th>
+                            <td>{{ item_count }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}

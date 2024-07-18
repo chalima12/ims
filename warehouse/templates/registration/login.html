@@ -1,0 +1,97 @@
+{% load static %}
+{% load i18n %}
+{% load custom_filters %}  <!-- Load the custom filters -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="{% static 'admin/css/login.css' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Include Font Awesome CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body.login {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #1c1e21;
+        }
+        #login-form {
+            width: 100%;
+            max-width: 360px;
+            padding: 15px;
+            margin: auto;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        #login-form h1 {
+            margin-bottom: 30px;
+            color: #1c1e21;
+            text-align: center;
+        }
+        .form-control {
+            background: #f5f6f7;
+        }
+        .input-group-prepend {
+            width: 100%;
+            text-align: left;
+        }
+        .input-group-text {
+            background: #007bff;
+            color: white;
+            border-radius: 0;
+        }
+        .input-group-prepend p {
+            margin-bottom: 0;
+            margin-left: 10px; /* Adjust as needed */
+            color: #495057; /* Text color */
+        }
+        .btn-primary {
+            background: #007bff;
+            border: none;
+        }
+    </style>
+</head>
+<body class="login">
+    <div id="login-form">
+        <h1 id="site-name">{% trans 'Login To IMS' %}</h1>
+        <form method="post" action="{% url 'login' %}">
+            {% csrf_token %}
+            {{ form.non_field_errors }}
+            <div class="form-row mb-3">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">
+                            <i class="fas fa-envelope"></i>
+                        </span>
+                        <p>Username</p>
+                    </div>
+                    {{ form.username.errors }}
+                    {{ form.username|add_class:"form-control" }}
+                </div>
+            </div>
+            <div class="form-row mb-3">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">
+                            <i class="fas fa-lock"></i>
+                        </span>
+                        <p>Password</p>
+                    </div>
+                    {{ form.password.errors }}
+                    {{ form.password|add_class:"form-control" }}
+                </div>
+            </div>
+            <div class="submit-row">
+                <button type="submit" class="btn btn-primary btn-block">{% trans 'Log in' %}</button>
+            </div>
+        </form>
+        <p class="text-center mt-3"><a href="{% url 'password_reset' %}">Forgot password?</a></p>
+    </div>
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+</body>
+</html>

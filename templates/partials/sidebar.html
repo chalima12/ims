@@ -1,0 +1,193 @@
+<!-- Sidebar -->
+<!-- Main Sidebar Container -->
+{% load static %}
+  <aside class="main-sidebar sidebar-dark-primary elevation-4 fixed">
+    <!-- Brand Logo -->
+  
+    <a href="#" class="brand-link">
+      <!--<img src="{% static 'dist/img/MotiEngineeringLogo.png' %}" alt="MOTI Logo" class="brand-image img-circle elevation-3" style="opacity: .8">-->
+      <span class="brand-text font-weight-light">MOTI ENGINEERING</span>
+    </a>
+    {% if user.is_authenticated %}
+    <div class="sidebar">
+      <!-- Sidebar Menu -->
+      <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          <!-- Add icons to the links using the .nav-icon class with font-awesome or any other icon font library -->
+          <!-- WSMS Dropdown -->
+          <li class="nav-item has-treeview">
+               <a href="#" class="nav-link">
+              {% if user.profile_picture %}
+              <img class='profile-user-img rounded-circle sm img-fluid' src="{{ user.profile_picture.url }}" alt="Profile Picture">
+              {% else %}
+              <i class="fa-solid fa-user"></i>
+              {% endif %}
+              <p>
+               {{ user.first_name }}
+                
+              </p>
+            </a>
+             <ul class="nav nav-treeview">
+                 <li class="nav-item">
+                <a href="{% url 'workshop:change_password' %}" class="nav-link">
+               <i class="fa-solid fa-cash-register"></i>
+                  <p>Change password</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{% url 'workshop:edit_profile_picture' %}" class="nav-link">
+                 <i class="fa-solid fa-pen-to-square"></i>
+                  <p>Edit Profile</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{% url 'workshop:logout' %}" class="nav-link">
+                 <i class="fa-solid fa-right-from-bracket"></i>
+                  <p>Logout</p>
+                </a>
+              </li>
+                  </ul>
+           </li>   
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-home"></i>
+              <p>
+                WSMS
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              {% if user.view_dashboard %}
+
+              <li class="nav-item">
+                <a href="{% url "workshop:chart" %}" class="nav-link">
+                  <i class="fa-solid fa-gauge"></i>
+                  <p>Dashboard</p>
+                </a>
+              </li>
+              {% endif %}
+              {% if user.view_user %}
+              <li class="nav-item">
+                <a href="{% url "workshop:user" %}" class="nav-link">
+                 <i class="fa-solid fa-users"></i>
+                  <p>Users</p>
+                </a>
+              </li>
+              {% endif %}
+              {% if user.view_item %}
+              <li class="nav-item">
+                <a href="{% url "workshop:item" %}" class="nav-link">
+                  <i class="fa-solid fa-cart-shopping"></i>
+                  <p>Items</p>
+                </a>
+              </li>
+              {% endif %}
+              {% if user.view_section %}
+              <li class="nav-item">
+                <a href="{% url "workshop:section" %}" class="nav-link">
+                 <i class="fa-solid fa-section"></i>
+                  <p>Sections</p>
+                </a>
+              </li>
+              {% endif %}
+              {% if user.view_assignment %}
+
+              <li class="nav-item">
+                <a href="{% url "workshop:assignment" %}" class="nav-link">
+                 <i class="fa-solid fa-list-check"></i>
+                  <p>Assignments</p>
+                </a>
+              </li>
+              {% endif %}
+            </ul>
+          </li>
+          <!-- Reports Dropdown -->
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="fa-solid fa-chart-simple"></i>
+              <p>
+                Reports
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              {% if user.view_report %}
+
+              <li class="nav-item">
+                <a href="{% url "workshop:report" %}" class="nav-link">
+                 <i class="fa-solid fa-table"></i>
+                  <p>Table</p>
+                </a>
+              </li>
+              {% endif %}
+              {% if user.view_report %}
+
+              <li class="nav-item">
+                <a href="{% url "workshop:analysis" %}" class="nav-link">
+                 <i class="fa-solid fa-chart-column"></i>
+                  <p>Chart</p>
+                </a>
+              </li>
+              {% endif %}
+              {% if user.view_report %}
+
+              <li class="nav-item">
+                <a href="{% url "workshop:stock_item_list" %}" class="nav-link">
+                <i class="fa-solid fa-layer-group"></i>
+                  <p>Item per Stock</p>
+                </a>
+              </li>
+              {% endif %}
+              {% if user.view_report %}
+
+              <li class="nav-item">
+                <a href="{% url "workshop:district_item_list" %}" class="nav-link">
+                 <i class="fa-solid fa-globe"></i>
+                  <p>Item per District</p>
+                </a>
+              </li>
+              {% endif %}
+              {% if user.view_report %}
+
+              <li class="nav-item">
+                <a href="{% url "workshop:section_item_list" %}" class="nav-link">
+                  <i class="fa-solid fa-section"></i>
+                  <p>Item per Section</p>
+                </a>
+              </li>
+              {% endif %}
+              {% if user.view_report %}
+
+              <li class="nav-item">
+                <a href="{% url "workshop:engineer_item_status" %}" class="nav-link">
+                  <i class="fas fa-wrench"></i>
+
+                  <p>Item per Engineers</p>
+                </a>
+              </li>
+              {% endif %}
+
+
+              {% if user.is_wh %}
+
+              <li class="nav-item">
+                <a href="{% url "workshop:assignment1" %}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Items for Approval</p>
+                </a>
+              </li>
+              {% endif %}   
+            </ul>
+
+          </li>
+        </ul>
+
+      </nav>
+    </div>
+  
+
+
+
+
+    {% endif %}
+  </aside>

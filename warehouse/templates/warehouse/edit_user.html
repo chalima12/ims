@@ -1,0 +1,39 @@
+<!-- warehouse/edit_user.html -->
+{% extends "base.html" %}
+
+{% block content %}
+  <h2>Edit User</h2>
+  <form method="post" class="row">
+    {% csrf_token %}
+    
+    <div class="col-md-6 mb-3">
+      <label for="{{ form.first_name.id_for_label }}">{{ form.first_name.label }}</label>
+      {{ form.first_name }}
+    </div>
+    <div class="col-md-6 mb-3">
+      <label for="{{ form.last_name.id_for_label }}">{{ form.last_name.label }}</label>
+      {{ form.last_name }}
+    </div>
+    <div class="col-md-6 mb-3">
+      <label for="{{ form.user_name.id_for_label }}">{{ form.user_name.label }}</label>
+      {{ form.user_name }}
+    </div>
+
+    <div class="col-md-6 mb-3">
+        <label for="{{ form.email.id_for_label }}">{{ form.email.label }}</label>
+        {{ form.email }}
+      </div>
+    <div class="col-md-6 mb-3">
+      <label for="{{ form.password.id_for_label }}">{{ form.password.label }}</label>
+      {{ form.password }}
+    </div>
+    <div class="col-md-6 mb-3">
+      <label for="{{ form.user_type.id_for_label }}">{{ form.user_type.label }}</label>
+      {{ form.user_type }}
+    </div>
+    
+    <div class="col-12">
+      <button type="submit" class="btn btn-primary">Save changes</button>
+    </div>
+  </form>
+{% endblock %}

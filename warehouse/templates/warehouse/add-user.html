@@ -1,0 +1,54 @@
+
+{% extends "base.html" %}
+{% block content %}
+<div class="container card p-0 mt-0 text-center border-primary bg-gray">
+  <h3>Add User</h3>
+</div>
+
+<form method="post" autocomplete='off' class='card p-3 mt-5 bg-light'>
+
+  {% csrf_token %} 
+  <div class="row">
+    <div class="col-6">
+      <label for="id_first_name">First Name:</label>
+      {{ form.first_name }}
+    </div>
+    <div class="col-6">
+      <label for="id_last_name">Last Name:</label>
+      {{ form.last_name }}
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-4">
+      <label for="id_user_name">User Name:</label>
+      {{ form.user_name }}
+    </div>
+    <div class="col-4">
+      <label for="id_pass_word">Password:</label>
+      {{ form.password }}
+    </div>
+    <div class="col-4">
+      <label for="id_user_type">User Type:</label>
+      {{ form.user_type }}
+    </div>
+  </div>
+
+  <div class="col-4 mt-2">
+    <button type="submit" class="btn btn-primary btn-md" style='border-radius:10%'>Register</button>
+  </div>
+  
+</form>
+
+<!-- JavaScript for Show/Hide Password -->
+<script>
+  const passwordField = document.getElementById('id_pass_word');
+  const showPasswordCheckbox = document.getElementById('showPassword');
+
+  showPasswordCheckbox.addEventListener('change', function() {
+    const type = this.checked ? 'text' : 'password';
+    passwordField.type = type;
+  });
+</script>
+
+{% endblock content %}

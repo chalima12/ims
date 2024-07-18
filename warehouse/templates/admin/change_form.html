@@ -1,0 +1,12 @@
+{# warehouse/templates/admin/change_form.html #}
+{% extends "admin/change_form.html" %}
+
+{% block content %}
+    <div>
+        <label for="id_profile_picture">Profile Picture:</label>
+        {% if original.profile_picture %}
+            <img src="{{ original.profile_picture.url }}" alt="Profile Picture" style="width:100px;height:100px;">
+        {% endif %}
+        {{ block.super }}
+    </div>
+{% endblock %}

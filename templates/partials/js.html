@@ -1,0 +1,258 @@
+{% load static %}
+<script src="{% static 'plugins/jquery/jquery.min.js' %}"></script>
+    <!-- jQuery UI 1.11.4 -->
+    <script src="{% static 'plugins/jquery-ui/jquery-ui.min.js' %}"></script>
+    <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+    <script>
+      $.widget.bridge('uibutton', $.ui.button)
+    </script>
+    <!-- Bootstrap 4 -->
+    <script src="{% static 'plugins/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    <!-- ChartJS -->
+    <script src="{% static 'plugins/chart.js/Chart.min.js' %}"></script>
+    <!-- Sparkline -->
+    <script src="{% static 'plugins/sparklines/sparkline.js' %}"></script>
+    <!-- JQVMap -->
+    <script src="{% static 'plugins/jqvmap/jquery.vmap.min.js' %}"></script>
+    <script src="{% static 'plugins/jqvmap/maps/jquery.vmap.usa.js' %}"></script>
+    <!-- jQuery Knob Chart -->
+    <script src="{% static 'plugins/jquery-knob/jquery.knob.min.js' %}"></script>
+    <!-- daterangepicker -->
+    <script src="{% static 'plugins/moment/moment.min.js' %}"></script>
+    <script src="{% static 'plugins/daterangepicker/daterangepicker.js' %}"></script>
+    <!-- Tempusdominus Bootstrap 4 -->
+    <script src="{% static 'plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js' %}"></script>
+    <!-- Summernote -->
+    {% comment %} <script src="{% static 'plugins/summernote/summernote-bs4.min.js' %}"></script> {% endcomment %}
+    <!-- overlayScrollbars -->
+    {% comment %} <script src="{% static 'plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js' %}"></script> {% endcomment %}
+    <!-- AdminLTE App -->
+  
+    <script src="{% static 'plugins/jquery/jquery.min.js' %}"></script>
+    <!-- jQuery UI 1.11.4 -->
+    <script src="{% static 'plugins/jquery-ui/jquery-ui.min.js' %}"></script>
+    <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+    <script>
+      $.widget.bridge('uibutton', $.ui.button)
+    </script>
+    <!-- Bootstrap 4 -->
+    <script src="{% static 'plugins/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    <!-- ChartJS -->
+    <script src="{% static 'plugins/chart.js/Chart.min.js' %}"></script>
+    <!-- Sparkline -->
+    <script src="{% static 'plugins/sparklines/sparkline.js' %}"></script>
+    <!-- JQVMap -->
+    <script src="{% static 'plugins/jqvmap/jquery.vmap.min.js' %}"></script>
+    <script src="{% static 'plugins/jqvmap/maps/jquery.vmap.usa.js' %}"></script>
+    <!-- jQuery Knob Chart -->
+    <script src="{% static 'plugins/jquery-knob/jquery.knob.min.js' %}"></script>
+    <!-- daterangepicker -->
+    <script src="{% static 'plugins/moment/moment.min.js' %}"></script>
+    <script src="{% static 'plugins/daterangepicker/daterangepicker.js' %}"></script>
+    <!-- Tempusdominus Bootstrap 4 -->
+    <script src="{% static 'plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js' %}"></script>
+    <!-- Summernote -->
+    <script src="{% static 'plugins/summernote/summernote-bs4.min.js' %}"></script>
+    <!-- overlayScrollbars -->
+    <!-- AdminLTE App -->
+    <script src="{% static 'dist/js/adminlte.js' %}"></script>
+    <!-- AdminLTE for demo purposes -->
+    
+    <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+    <script src="{% static 'dist/js/pages/dashboard.js' %}"></script>
+    <!-- DataTables  & Plugins -->
+    <script src="{% static 'plugins/datatables/jquery.dataTables.min.js' %}"></script>
+    <script src="{% static 'plugins/datatables-bs4/js/dataTables.bootstrap4.min.js' %}"></script>
+    <script src="{% static 'plugins/datatables-responsive/js/dataTables.responsive.min.js' %}"></script>
+    <script src="{% static 'plugins/datatables-responsive/js/responsive.bootstrap4.min.js' %}"></script>
+    <script src="{% static 'plugins/datatables-buttons/js/dataTables.buttons.min.js' %}"></script>
+    <script src="{% static 'plugins/datatables-buttons/js/buttons.bootstrap4.min.js' %}"></script>
+    <script src="{% static 'plugins/jszip/jszip.min.js' %}"></script>
+    <script src="{% static 'plugins/pdfmake/pdfmake.min.js' %}"></script>
+    <script src="{% static 'plugins/pdfmake/vfs_fonts.js' %}"></script>
+    <script src="{% static 'plugins/datatables-buttons/js/buttons.html5.min.js' %}"></script>
+    <script src="{% static 'plugins/datatables-buttons/js/buttons.print.min.js' %}"></script>
+    <script src="{% static 'plugins/datatables-buttons/js/buttons.colVis.min.js' %}"></script>
+    <!-- ChartJS -->
+    
+    <!-- Select2 -->
+    <script src="{% static 'plugins/select2/js/select2.full.min.js' %}"></script>
+    <!-- SweetAlert2 -->
+    <script src="{% static 'plugins/sweetalert2/sweetalert2.min.js' %}"></script>
+    <script src="{% static 'plugins/sweetalert2/sweetalert2.all.min.js' %}"></script>
+    <!-- bs-custom-file-input -->
+    <script src="{% static 'plugins/bs-custom-file-input/bs-custom-file-input.min.js' %}"></script>
+    <!-- Bootstrap Switch -->
+    <script src="{% static 'plugins/bootstrap-switch/js/bootstrap-switch.min.js' %}"></script>
+    <script>
+      $(document).ready(function() {
+        $('.sidebar-toggler').click(function() {
+          $('body').toggleClass('sidebar-collapse');
+        });
+      });
+    </script>
+
+
+<!-- Page specific script -->
+<script>
+  $(function () {
+    $("#example1").DataTable({
+      "responsive": true, "lengthChange": false, "autoWidth": false,
+      "buttons": ["excel", "pdf", "colvis"]
+    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+    $('#example2').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": false,
+      "info": true,
+      "autoWidth": false,
+      "responsive": true,
+    });
+  });
+</script>
+
+<script>
+  $(function () {
+    $("#example4").DataTable({
+      "responsive": true, "lengthChange": false, "autoWidth": false,
+      "buttons": ["colvis"]
+    }).buttons().container().appendTo('#example4_wrapper .col-md-6:eq(0)');
+    $('#example2').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": false,
+      "info": true,
+      "autoWidth": false,
+      "responsive": true,
+    });
+  });
+</script>
+
+
+
+<script>
+ $(document).ready(function () {
+    // Toggle sidebar functionality
+    $('.sidebar-toggler').click(function () {
+        $('body').toggleClass('sidebar-collapse');
+    });
+
+    // Activate the active link in the sidebar
+    activateSidebarLink();
+
+    // Function to activate the active link in the sidebar
+    function activateSidebarLink() {
+        document.querySelectorAll(".nav-link").forEach((link) => {
+            // Check if the current page URL matches the link's URL or if it starts with the link's URL
+            if (window.location.href === link.href || window.location.href.startsWith(link.href)) {
+                link.classList.add("active");
+
+                // Check if the link has a parent with the class "nav-treeview"
+                const parentTreeview = link.closest(".nav-treeview");
+                if (parentTreeview) {
+                    // Open the parent treeview by adding the "show" class
+                    parentTreeview.classList.add("show");
+
+                    // Find the parent link associated with the treeview and add "active" class
+                    const parentNavLink = parentTreeview.closest(".nav-item").querySelector(".nav-link");
+                    if (parentNavLink) {
+                        parentNavLink.classList.add("active");
+                    }
+                } else {
+                    // Check if the link has a parent with the class "has-treeview"
+                    const parentHasTreeview = link.closest(".has-treeview");
+                    if (parentHasTreeview) {
+                        // Open the parent treeview by adding the "menu-open" class
+                        parentHasTreeview.classList.add("menu-open");
+
+                        // Find the parent link associated with the treeview and add "active" class
+                        const parentNavLink = parentHasTreeview.querySelector(".nav-link");
+                        if (parentNavLink) {
+                            parentNavLink.classList.add("active");
+                        }
+                    }
+                }
+            }
+        });
+    }
+});
+
+    
+    
+    
+    
+</script>
+
+
+<script>
+  // Function to submit the form when an option is selected
+  function submitFormOnChange(selectId) {
+      document.getElementById(selectId).addEventListener('change', function() {
+          document.getElementById(selectId).form.submit();
+      });
+  }
+
+  // Submit forms when an option is selected
+  submitFormOnChange('report_type');
+  submitFormOnChange('section');
+  submitFormOnChange('time_range');
+  submitFormOnChange('report_type2');
+  submitFormOnChange('section2');
+</script>
+
+<script>
+  $(function () {
+    $("#example5").DataTable({
+      "responsive": true, "lengthChange": false, "autoWidth": false,"paging": false,
+      "buttons": ["excel",  "colvis"]
+    }).buttons().container().appendTo('#example5_wrapper .col-md-6:eq(0)');
+    $('#example2').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": false,
+      "info": true,
+      "autoWidth": false,
+      "responsive": true,
+    });
+  });
+</script>
+
+
+<script>
+  $(function () {
+    $("#example7").DataTable({
+      "responsive": true, "lengthChange": false, "autoWidth": false,"paging": false,
+      "buttons": ["excel",  "colvis"]
+    }).buttons().container().appendTo('#example7_wrapper .col-md-6:eq(0)');
+    $('#example2').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": false,
+      "info": true,
+      "autoWidth": false,
+      "responsive": true,
+    });
+  });
+</script>
+
+<script>
+  $(function () {
+    $("#example6").DataTable({
+      "responsive": true, "lengthChange": false, "autoWidth": false,"paging": false,
+      "buttons": ["excel", "colvis"]
+    }).buttons().container().appendTo('#example6_wrapper .col-md-6:eq(0)');
+    $('#example2').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": false,
+      "info": true,
+      "autoWidth": false,
+      "responsive": true,
+    });
+  });
+</script>

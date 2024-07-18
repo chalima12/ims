@@ -1,0 +1,49 @@
+
+
++-----------------+       +----------------+       +--------------+
+|      Item       |<----->|     Stock      |<----->|    Order     |
++-----------------+       +----------------+       +--------------+
+| - item_id       |       | - stock_id     |       | - order_id   |
+| - stock         |       | - current_level|       | - item       |
+| - name          |       |                |       | - quantity   |
+| - category      |       |                |       | - order_date |
+| - description   |       +----------------+       | - status     |
+| - quantity      |                                      
+| - price         |                                      
+| + add_item()    |                                      
+| + edit_item()   |                                      
+| + delete_item() |                                      
+| + view_item()   |                                      
++-----------------+                                      
+      ^                                                  
+      |                                                  
+      |                                                  
++------------------+                              
+| MaterialRequest  |                            
++------------------+                              
+| - request_id     |                              
+| - user           |                              
+| - item           |                              
+| - request_date   |                              
+| - status         |                              
+| + create_request()|                     
+| + approve_request()|                          
+| + deny_request() |
+| + issue_material()|
+| + record_return()|
+| + record_transfer()|
++------------------+
+        |
+        v
++-----------------+       +----------------+
+|      User       |<----->|  Notification  |
++-----------------+       +----------------+
+| - user_id       |       | - notification_id|
+| - username      |       | - user           |
+| - password      |       | - message        |
+| - role          |       | - notification_date|
+| + add_user()    |       | + alert_low_stock()|
+| + edit_user()   |       | + notify_order_status()|
+| + delete_user() |       +----------------+
+| + manage_roles()|
++-----------------+

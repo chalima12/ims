@@ -1,0 +1,109 @@
+{% extends "base.html" %}
+
+
+{% block title %}
+
+
+<title>List of Users</title>
+
+{% endblock title %}
+
+
+{% block content1 %}
+
+    <a class="btn btn-warning" href="{% url 'add-user' %}">
+    
+    
+    <span class="fa fa-plus">
+    &nbsp;&nbsp; Add User
+    </span>
+    </a>
+
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        {{ message }}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                {% endfor %}
+            {% endif %}
+   
+    
+{% endblock content1 %}
+    
+
+{% block content %}
+
+                    <div class="card-header">
+                       </h2 class="container mx-5 card-title">List of usres</h2>
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body">
+                        <table id="example4" class="table table-bordered table-striped">
+
+                            <thead class="table-info-box">
+                                <tr>
+                                    <th>Firstname</th>
+                                    <th>Lastname</th>
+                                    <th>User Name</th>
+
+                                   
+                                    
+                                        <th>Edit User</th>
+                                        <th>Remove</th>
+                                        
+                                    
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                            
+                                {% for data in users %}
+                                    <tr>
+
+
+                                        <td>{{data.first_name|upper}}</td>
+                                        <td>{{data.last_name|upper}}</td>
+                                        <td>{{data.user_name}} </td>
+
+                                            
+                                                <td>
+                                                    <a class="btn btn-warning btn-sm fas-fa-pen" href="{% url 'user_edit' data.id %}">
+                                                       
+                                                           Edit
+                                                        
+                                                    </a>
+                                                        
+                                                </td>
+
+
+                                                <td >
+                                                    <a style='border-radius:10%' class="btn btn-danger btn-sm" href="javascript:void(0)"
+                                                    data-toggle="modal"
+                                                    class="confirm-accept"
+                                                    data-url="#"
+                                                    
+                                                    data-target="#acceptItemModal"
+                                                    data-message="Are you Sure to delete {{data.first_name}}  ?">
+                                                    <i class="fa-sharp fa-solid fa-trash"></i>
+                                                
+                                                </td>
+                                        </td> 
+                                          
+                                    
+
+                                    
+                                    
+                                    </tr>
+
+
+
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+{% endblock content %}
+
+

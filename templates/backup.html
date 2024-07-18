@@ -1,0 +1,500 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Moti Engineering | {{title}}</title>
+    <!-- Google Font: Source Sans Pro -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback"
+    />
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="{% static 'plugins/fontawesome-free/css/all.min.css' %}"
+    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- fullCalendar -->
+  {% comment %} <link rel="stylesheet" href="{% static 'plugins/fullcalendar/main.css' %}">
+    <!-- SweetAlert2 --> {% endcomment %}
+
+  <link rel="stylesheet" href="{% static 'plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css' %}">
+    <!-- Ionicons -->
+    <link
+      rel="stylesheet"
+      href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css"
+    />
+    <!-- Tempusdominus Bootstrap 4
+    <link
+      rel="stylesheet"
+      href="{% static 'plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css' %}"
+    /> -->
+
+    <!-- DataTables -->
+  <link rel="stylesheet" href="{% static 'plugins/datatables-bs4/css/dataTables.bootstrap4.min.css' %}">
+  <link rel="stylesheet" href="{% static 'plugins/datatables-responsive/css/responsive.bootstrap4.min.css' %}">
+  <link rel="stylesheet" href="{% static 'plugins/datatables-buttons/css/buttons.bootstrap4.min.css' %}">
+    <!-- iCheck -->
+    <link
+      rel="stylesheet"
+      href="{% static 'plugins/icheck-bootstrap/icheck-bootstrap.min.css' %}"
+    />
+    <!-- JQVMap -->
+    {% comment %} <link
+      rel="stylesheet"
+      href="{% static 'plugins/jqvmap/jqvmap.min.css' %}"
+    /> {% endcomment %}
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'dist/img/MotiEngineeringLogo.png' %}">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="{% static 'dist/css/adminlte.min.css' %}" />
+    <!-- overlayScrollbars -->
+    {% comment %} <link
+      rel="stylesheet"
+      href="{% static 'plugins/overlayScrollbars/css/OverlayScrollbars.min.css' %}"
+    /> {% endcomment %}
+    <!-- Daterange picker -->
+    {% comment %} <link
+      rel="stylesheet"
+      href="{% static 'plugins/daterangepicker/daterangepicker.css' %}"
+    />
+    <!-- summernote -->
+    <link
+      rel="stylesheet"
+      href="{% static 'plugins/summernote/summernote-bs4.min.css' %}"
+    /> {% endcomment %}
+    <!-- Select2 -->
+  <link rel="stylesheet" href="{% static 'plugins/select2/css/select2.min.css' %}">
+  <link rel="stylesheet" href="{% static 'plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css' %}">
+  <style>
+    .select2-container--default .select2-selection--multiple .select2-selection__choice{
+      background-color:#007bff;
+    }
+    html {
+    font-size: 14px;
+} 
+  </style>
+  </head>
+  <body class="hold-transition sidebar-mini layout-fixed">
+    <div class="wrapper">
+      <!-- Preloader -->
+      <div
+        class="preloader flex-column justify-content-center align-items-center"
+      >
+        <img
+          class="animation__shake"
+          src="{% static 'dist/img/LogooM.png' %}"
+          alt="AdminLTELogo"
+          height="60"
+          width="60"
+        />
+      </div>
+
+      <!-- Navbar -->
+      <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+        <!-- Left navbar links -->
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" data-widget="pushmenu" href="#" role="button"
+              ><i class="fas fa-bars text-info"></i> 
+              <strong>WSMS Portal</strong></a
+            >
+          </li>
+        </ul>
+
+        <!-- Right navbar links -->
+        <ul class="navbar-nav ml-auto">
+          <!-- Navbar Search -->
+          {% if user.is_authenticated %}
+          <section class="ftco-section">
+              <div class="container ml-3">
+                  <div class="row justify-content-center">
+                      <div class="col-md-6 d-flex justify-content-center">
+                          <div class="btn-group">
+                              <a href="#" class="btn-img img dropdown-toggle rounded-circle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                  {% if user.profile_picture %}
+                                  <img class='profile-user-img rounded-circle sm img-fluid' src="{{ user.profile_picture.url }}" alt="Profile Picture">
+                                  {% endif %}
+                                  <div class='btn text-white'>{{ user.first_name }} {{ user.last_name }} </a></div>
+                             
+                              <div class="dropdown-menu">
+                                  <a class="dropdown-item d-flex align-items-center" href="{% url 'workshop:change_password' %}">
+                                      <div class="icon d-flex align-items-center justify-content-center mr-3"></div>
+                                      Change Password
+                                      <section class="ftco-section"></a>
+                                  <a class="dropdown-item d-flex align-items-center" href="{% url 'workshop:edit_profile_picture' %}">
+                                      <div class="icon d-flex align-items-center justify-content-center mr-3"></div> 
+                                      Edit profile
+                                  </a>
+                                  <a class="dropdown-item d-flex align-items-center" href="{% url 'workshop:logout' %}">
+                                      <div class="icon d-flex align-items-center justify-content-center mr-3"></div> 
+                                      Logout
+                                  </a>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </section>
+          {% else %}
+          <a style='border-radius:15%' href="{% url 'workshop:custom_login' %}" class="btn-block btn-lg btn-secondary"> Login</a>
+          {% endif %}
+          <li class="nav-item dropdown">
+              <a class="nav-link position-relative" data-toggle="dropdown" href="#">
+                  <div style="font-size: 24px; color: #3498db;"> <!-- Adjust the color of the bell icon here -->
+                      <i class="far fa-bell"></i>
+                      <!-- Check if count_1 is greater than zero before displaying -->
+                      <span style="position: absolute; top: 0; right: 1; font-size: 20px; color: white;" class="badge badge-cyan navbar-badge" id="message-count_1">{{ count_1 }}</span> <!-- Adjust the color of the badge here -->
+                  </div>
+              </a>
+              <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+                  <span class="dropdown-item dropdown-header" id="message-count_2"></span>
+                  <div class="dropdown-divider"></div>
+              </div>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" data-widget="fullscreen" href="#" role="button">
+                  <i class="fas fa-expand-arrows-alt"></i>
+              </a>
+          </li>
+      </ul>
+      <!-- /.navbar -->
+
+      <!-- Main Sidebar Container -->
+      <aside class="main-sidebar sidebar-dark-primary elevation-4 fixed">
+        <!-- Brand Logo -->
+        {% if user.is_authenticated %}
+        <a href="#" class="brand-link">
+            <img src="{% static 'dist/img/logoM.png' %}" alt="MOTI Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+            <span class="brand-text font-weight-light">MOTI ENGINEERING</span>
+        </a>
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <!-- Sidebar Menu -->
+            <nav class="mt-2">
+                <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                    <!-- Add icons to the links using the .nav-icon class with font-awesome or any other icon font library -->
+                    <!-- WSMS Dropdown -->
+                    <li class="nav-item has-treeview">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon fas fa-home"></i>
+                            <p>
+                                WSMS
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            {% if user.view_dashboard %}
+                          
+                            <li class="nav-item">
+                              <a href="{% url "workshop:chart" %}" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Dashboard</p>
+                                </a>
+                            </li>
+                            {% endif %}
+                            {% if user.view_user %}
+                            <li class="nav-item">
+                              <a href="{% url "workshop:user" %}" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Users</p>
+                                </a>
+                            </li>
+                            {% endif %}
+                            {% if user.view_item %}
+                            <li class="nav-item">
+                              <a href="{% url "workshop:item" %}" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Items</p>
+                                </a>
+                            </li>
+                            {% endif %}
+                            {% if user.view_section %}
+                            <li class="nav-item">
+                              <a href="{% url "workshop:section" %}" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Sections</p>
+                                </a>
+                            </li>
+                            {% endif %}
+                            {% if user.view_assignment %}
+                            
+                            <li class="nav-item">
+                              <a href="{% url "workshop:assignment" %}" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Assignments</p>
+                                </a>
+                            </li>
+                            {% endif %}
+                        </ul>
+                    </li>
+                    <!-- Reports Dropdown -->
+                    <li class="nav-item has-treeview">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon fas fa-repeat"></i>
+                            <p>
+                                Reports
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            {% if user.view_report %}
+                            
+                            <li class="nav-item">
+                              <a href="{% url "workshop:report" %}" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Table</p>
+                                </a>
+                            </li>
+                            {% endif %}
+                            {% if user.view_report %}
+                            
+                            <li class="nav-item">
+                              <a href="{% url "workshop:analysis" %}" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Chart</p>
+                                </a>
+                            </li>
+                            {% endif %}
+                            {% if user.view_report %}
+                           
+                            <li class="nav-item">
+                              <a href="{% url "workshop:stock_item_list" %}" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Item per Stock</p>
+                                </a>
+                            </li>
+                            {% endif %}
+                            {% if user.view_report %}
+                           
+                            <li class="nav-item">
+                              <a href="{% url "workshop:district_item_list" %}" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Item per District</p>
+                                </a>
+                            </li>
+                            {% endif %}
+                            {% if user.view_report %}
+                            
+                            <li class="nav-item">
+                              <a href="{% url "workshop:section_item_list" %}" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Item per Section</p>
+                                </a>
+                            </li>
+                            {% endif %}
+                            {% if user.view_report %}
+                           
+                            <li class="nav-item">
+                              {% comment %} <a href="{% url "workshop:engineer_item_list" %}" class="nav-link"> {% endcomment %}
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Item per Engineers</p>
+                                </a>
+                            </li>
+                            {% endif %}
+                        </ul>
+                    </li>
+                    {% if user.is_wh %}
+                          
+                            <li class="nav-item">
+                              <a href="{% url "workshop:assignment1" %}" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Items for Approval</p>
+                                </a>
+                            </li>
+                            {% endif %}
+                </ul>
+                
+            </nav>
+        </div>
+        {% endif %}
+    </aside>
+    
+  
+     
+      
+      {% block content %}{% endblock content %}
+      
+    <!-- ./wrapper -->
+
+
+    <script>
+      document.querySelectorAll(".nav-link").forEach((link) => {
+        // Check if the current page URL is exactly equal to the link's URL
+        if (window.location.href === link.href) {
+          link.classList.add("active");
+        }
+      });
+
+        
+      // For sublinks
+      document.querySelectorAll(".nav-treeview a").forEach((sublink) => {
+        // Check if the current page URL is exactly equal to the sublink's URL
+        if (window.location.href === sublink.href) {
+          sublink.classList.add("active-sublink");
+
+          // Find the main nav link associated with the sublink
+          const mainNavLink = sublink.closest(".nav-item").querySelector(".nav-link");
+          if (mainNavLink) {
+            mainNavLink.classList.add("active");
+          }
+        }
+      });
+    </script>
+
+    <!-- jQuery -->
+    <script src="{% static 'plugins/jquery/jquery.min.js' %}"></script>
+    <!-- jQuery UI 1.11.4 -->
+    <script src="{% static 'plugins/jquery-ui/jquery-ui.min.js' %}"></script>
+    <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+    <script>
+      $.widget.bridge("uibutton", $.ui.button);
+    </script>
+    <!-- Select2 -->
+  <script src="{% static 'plugins/select2/js/select2.full.min.js' %}"></script>
+    <!-- Bootstrap 4 -->
+    <script src="{% static 'plugins/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    <!-- ChartJS -->
+    <script src="{% static 'plugins/chart.js/Chart.min.js' %}"></script>
+    {% comment %} <!-- Sparkline -->
+    <script src="{% static 'plugins/sparklines/sparkline.js' %}"></script> {% endcomment %}
+    <!-- JQVMap -->
+    {% comment %} <script src="{% static 'plugins/jqvmap/jquery.vmap.min.js' %}"></script>
+    <script src="{% static 'plugins/jqvmap/maps/jquery.vmap.usa.js' %}"></script> {% endcomment %}
+    <!-- jQuery Knob Chart -->
+    {% comment %} <script src="{% static 'plugins/jquery-knob/jquery.knob.min.js' %}"></script>
+    <!-- daterangepicker -->
+    <script src="{% static 'plugins/moment/moment.min.js' %}"></script>
+    <script src="{% static 'plugins/daterangepicker/daterangepicker.js' %}"></script>
+    <!-- Tempusdominus Bootstrap 4 -->
+    <script src="{% static 'plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js' %}"></script>
+    <!-- Summernote -->
+    <script src="{% static 'plugins/summernote/summernote-bs4.min.js' %}"></script>
+    <!-- overlayScrollbars -->
+    <script src="{% static 'plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js' %}"></script> {% endcomment %}
+    <!-- SweetAlert2 -->
+    <script src="{% static 'plugins/sweetalert2/sweetalert2.min.js' %}"></script>
+    <!-- DataTables  & Plugins -->
+      <script src="{% static "plugins/datatables/jquery.dataTables.min.js" %}"></script>
+      <script src="{% static "plugins/datatables-bs4/js/dataTables.bootstrap4.min.js" %}"></script>
+      <script src="{% static "plugins/datatables-responsive/js/dataTables.responsive.min.js" %}"></script>
+      <script src="{% static "plugins/datatables-responsive/js/responsive.bootstrap4.min.js" %}"></script>
+      <script src="{% static "plugins/datatables-buttons/js/dataTables.buttons.min.js" %}"></script>
+      <script src="{% static "plugins/datatables-buttons/js/buttons.bootstrap4.min.js" %}"></script>
+      <script src="{% static "plugins/jszip/jszip.min.js" %}"></script>
+      <script src="{% static "plugins/pdfmake/pdfmake.min.js" %}"></script>
+      <script src="{% static "plugins/pdfmake/vfs_fonts.js" %}"></script>
+      <script src="{% static "plugins/datatables-buttons/js/buttons.html5.min.js" %}"></script>
+      <script src="{% static "plugins/datatables-buttons/js/buttons.print.min.js" %}"></script>
+      <script src="{% static "plugins/datatables-buttons/js/buttons.colVis.min.js" %}"></script>
+
+      <!-- fullCalendar 2.2.5 -->
+      {% comment %} <script src="{% static "plugins/moment/moment.min.js" %}"></script>
+      <script src="{% static "plugins/fullcalendar/main.js" %}"></script> {% endcomment %}
+      <!-- FLOT RESIZE PLUGIN - allows the chart to redraw when the window is resized -->
+      <script src="{% static "plugins/flot/jquery.flot.js" %}"></script>
+      <script src="{% static "plugins/flot/plugins/jquery.flot.resize.js" %}"></script>
+      <!-- Toastr -->
+      <script src="{% static "plugins/toastr/toastr.min.js" %}"></script>
+    <!-- AdminLTE App -->
+    <script src="{% static 'dist/js/adminlte.js' %}"></script>
+    <script src="{% static 'dist/js/pages/dashboard.js' %}"></script>
+    <!-- CHART JS CDN ONLINE-->
+    {% comment %} <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> {% endcomment %}
+    
+<!-- Page specific script -->
+<script>
+  $(function () {
+    $("#example1").DataTable({
+      "responsive": true, "lengthChange": true, "autoWidth": false,
+      "buttons": ["excel", "pdf", "print"]
+    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+    $('#example2').DataTable({
+      "paging": true,
+      "lengthChange": true,
+      "searching": true,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      "responsive": true,
+    });
+    
+  });
+</script>
+
+<script>
+  $(function () {
+      //Initialize Select2 Elements
+    $('.select2').select2()
+      //Initialize Select2 Element
+  })
+</script>
+<script>
+  $(function() {
+    var Toast = Swal.mixin({
+      toast: true,
+      position: 'top-end',
+      showConfirmButton: false,
+      timer: 3000
+    });
+
+    $('.swalDefaultSuccess').click(function() {
+      Toast.fire({
+        icon: 'success',
+        title: "Successfull Operation!"
+      })
+    });
+    $('.swalDefaultError').click(function() {
+      Toast.fire({
+        icon: 'error',
+        title: 'Something Wrong!! Please Try Again'
+      })
+    });
+  });
+</script>
+<script>
+  $(function () {
+      $('.pop').on('click', function () {
+        $('.imagepreview').attr('src', $(this).find('img').attr('src'));
+        $('#imagemodal').modal('show');
+      });
+    });
+</script>
+<script>
+  $(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})
+</script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+    function toggleChart(canvasId, iconId) {
+        // Your toggle chart logic here
+    }
+</script>
+<script>
+    $(document).ready(function () {
+        // show the charts initially
+        $(".chart-container, .chart-container1, .chart-container2").show();
+
+        // Toggle the chart visibility on plus/minus sign click
+        $(".toggle-chart, .toggle-chart1, .toggle-chart2").click(function () {
+            var chartContainer = $(this).closest('.card').find('.chart-container, .chart-container1, .chart-container2');
+
+            // Change the icon based on visibility before toggling
+            if (chartContainer.is(":visible")) {
+                $(this).html('<i class="fa fa-plus"></i>'); 
+            } else {
+                $(this).html('<i class="fa fa-minus"></i>'); 
+            }
+
+            chartContainer.toggle();
+        });
+    });
+</script>
+
+
+  </body>
+</html>

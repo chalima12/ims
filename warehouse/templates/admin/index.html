@@ -1,0 +1,14 @@
+<!-- templates/admin/index.html -->
+{% extends "admin/index.html" %}
+
+{% block content %}
+{{ block.super }}
+<div class="dashboard-module">
+    <h2>Custom Reports</h2>
+    <ul>
+        <li>
+            <a href="{% url 'admin:report-dashboard' %}">Report Dashboard</a>
+        </li>
+    </ul>
+</div>
+{% endblock %}
