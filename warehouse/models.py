@@ -16,6 +16,7 @@ user_type = [
     ('Admin', "Admin"),
     ('Other', "Other"),
 ]
+status=[("Pending","pending"),("shipped","shipped")]
 # models.py
 
 
@@ -70,20 +71,20 @@ class Item(models.Model):
     stock = models.ForeignKey(Stock, related_name='items', on_delete=models.CASCADE)
     name = models.CharField(max_length=100)
     description = models.TextField()
-    quantity = models.IntegerField()
+    
     price = models.DecimalField(max_digits=10, decimal_places=2)
 
     def __str__(self):
         return self.name
 
 class Order(models.Model):
-    item = models.ForeignKey(Item, on_delete=models.CASCADE)
+    stock = models.ForeignKey(Stock, on_delete=models.CASCADE,related_name='stocks')
     quantity = models.IntegerField()
     order_date = models.DateField()
-    status = models.CharField(max_length=50)
+    status = models.CharField(choices=status,default='penging',max_length=50)
 
     def __str__(self):
-        return f"Order {self.id} - {self.item.name}"
+        return f"Order {self.id} - {self.stock.Stock_no}"
 
 class MaterialRequest(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)

@@ -14,7 +14,7 @@ class ItemInline(admin.TabularInline):
     extra = 1
 
 class StockAdmin(ImportExportModelAdmin):
-    list_display = ('id', 'category', 'current_level')
+    list_display = ('id','Stock_no', 'category', 'current_level')
     search_fields = ('category__name',)
     list_filter = ('category',)
     inlines = [ItemInline]
@@ -41,13 +41,13 @@ class UserAdmin(BaseUserAdmin):
     ordering = ('user_name',)
 
 class ItemAdmin(ImportExportModelAdmin):
-    list_display = ('id', 'stock', 'name', 'description', 'quantity', 'price')
+    list_display = ('id', 'stock', 'name', 'description', 'price')
     search_fields = ('name', 'description')
     list_filter = ('stock__category',)
 
 class OrderAdmin(ImportExportModelAdmin):
-    list_display = ('id', 'item', 'quantity', 'order_date', 'status')
-    search_fields = ('item__name', 'status')
+    list_display = ('id', 'stock', 'quantity', 'order_date', 'status')
+    search_fields = ('status',)
     list_filter = ('order_date', 'status')
     actions = ['mark_as_shipped']
 

@@ -39,6 +39,9 @@ class UserCreateView(CreateView):
     model = User
     form_class=UserForm
     template_name = "warehouse/add-user.html"
+    success_url = reverse_lazy('user')
+    success_message = "User successfully created."
+    
 
 
 class UserListView(ListView):
@@ -50,3 +53,24 @@ class UserUpdateView(UpdateView):
     form_class = UserForm
     template_name = "warehouse/edit_user.html"
     success_url = reverse_lazy('user')
+
+
+
+from .forms import OrderForm
+
+class OrderCreateView(CreateView):
+    model = Order
+    form_class = OrderForm
+    template_name = "warehouse/add-order.html"
+    success_url = reverse_lazy('order_list')
+
+class OrderUpdateView(UpdateView):
+    model = Order
+    form_class = OrderForm
+    template_name = "warehouse/edit-order.html"
+    success_url = reverse_lazy('order_list')
+    
+class OrderListView(ListView):
+    model = Order
+    template_name = 'warehouse/order_list.html'
+    context_object_name = 'orders'

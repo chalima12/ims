@@ -38,3 +38,14 @@ from django.contrib.auth.forms import AuthenticationForm
 class CustomAuthenticationForm(AuthenticationForm):
     username = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Username'}))
     password = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'form-control', 'placeholder': 'Password'}))
+
+class OrderForm(forms.ModelForm):
+    class Meta:
+        model = Order
+        fields = ['stock', 'quantity', 'order_date', 'status']
+        widgets = {
+            'stock': forms.Select(attrs={'class': 'form-control'}),
+            'quantity': forms.NumberInput(attrs={'class': 'form-control'}),
+            'order_date': forms.DateInput(attrs={'type': 'date', 'class': 'form-control'}),
+            'status': forms.Select(attrs={'class': 'form-control'}),
+        }
