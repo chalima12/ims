@@ -137,9 +137,9 @@
                                 
                                 
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link">
+                                    <a href="{% url 'request_list' %}" class="nav-link">
                                         <i class="fa-solid fa-cart-shopping"></i>
-                                        <p>Items</p>
+                                        <p>Requests</p>
                                     </a>
                                 </li>
                                 
@@ -274,5 +274,43 @@
         });
     </script>
     {% include "partials/js.html" %}
+ <!-- Include jQuery and DataTables CSS/JS -->
+ <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+ <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css">
+ <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.6.5/css/buttons.dataTables.min.css">
+ <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+ <script src="https://cdn.datatables.net/buttons/1.6.5/js/dataTables.buttons.min.js"></script>
+ <script src="https://cdn.datatables.net/buttons/1.6.5/js/buttons.colVis.min.js"></script>
+ <script src="https://cdn.datatables.net/buttons/1.6.5/js/buttons.html5.min.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+ <script>
+     $(document).ready(function() {
+         $('#orderTable').DataTable({
+             dom: 'Bfrtip',
+             buttons: [
+                 'colvis',
+                 {
+                     extend: 'excelHtml5',
+                     title: 'Order List'
+                 }
+             ]
+         });
+
+         $('#requestTable').DataTable({
+            dom: 'Bfrtip',
+            buttons: [
+                'colvis',
+                {
+                    extend: 'excelHtml5',
+                    title: 'Request List'
+                }
+            ]
+        });
+     });
+
+     
+ </script>
+    {% block extra_scripts %}
+    {% endblock %}
 </body>
 </html>

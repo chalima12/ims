@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, render
 from django.views.generic import UpdateView, CreateView, DetailView, ListView, TemplateView
 from .forms import*
 from .models import*
@@ -55,14 +55,27 @@ class UserUpdateView(UpdateView):
     success_url = reverse_lazy('user')
 
 
+# views.py
+from django.shortcuts import render, redirect
+from .forms import OrderFormSet
 
-from .forms import OrderForm
+def create_orders(request):
+    if request.method == 'POST':
+        formset = OrderFormSet(request.POST, queryset=Order.objects.none())
+        if formset.is_valid():
+            formset.save()
+            return redirect('order_list')
+        else:
+            # Print errors to debug
+            print("Formset errors:", formset.errors)
+            for form in formset:
+                print(form.errors)
+    else:
+        formset = OrderFormSet(queryset=Order.objects.none())
 
-class OrderCreateView(CreateView):
-    model = Order
-    form_class = OrderForm
-    template_name = "warehouse/add-order.html"
-    success_url = reverse_lazy('order_list')
+    return render(request, 'warehouse/add-order.html', {'formset': formset})
+
+
 
 class OrderUpdateView(UpdateView):
     model = Order
@@ -73,4 +86,23 @@ class OrderUpdateView(UpdateView):
 class OrderListView(ListView):
     model = Order
     template_name = 'warehouse/order_list.html'
+    context_object_name = 'orders'
+
+
+class MaterialRequestCreateView(CreateView):
+    model = MaterialRequest
+    form_class = MaterialRequestForm
+    template_name = "warehouse/add-request.html"
+    success_url = reverse_lazy('request_list')
+
+
+class MaterialRequestUpdateView(UpdateView):
+    model = MaterialRequest
+    form_class = MaterialRequestForm
+    template_name = "warehouse/edit-request.html"
+    success_url = reverse_lazy('request_list')
+    
+class MaterialRequestListView(ListView):
+    model = MaterialRequest
+    template_name = 'warehouse/request_list.html'
     context_object_name = 'orders'

@@ -65,8 +65,7 @@ class Stock(models.Model):
     description=models.TextField(null=True)
 
     def __str__(self):
-        return f"Stock {self.id} in {self.category.name} - Current Level: {self.current_level}"
-
+        return f"Stock {self.Stock_no} "
 class Item(models.Model):
     stock = models.ForeignKey(Stock, related_name='items', on_delete=models.CASCADE)
     name = models.CharField(max_length=100)
@@ -81,7 +80,7 @@ class Order(models.Model):
     stock = models.ForeignKey(Stock, on_delete=models.CASCADE,related_name='stocks')
     quantity = models.IntegerField()
     order_date = models.DateField()
-    status = models.CharField(choices=status,default='penging',max_length=50)
+    status = models.CharField(choices=status,max_length=50)
 
     def __str__(self):
         return f"Order {self.id} - {self.stock.Stock_no}"
@@ -90,7 +89,7 @@ class MaterialRequest(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     item = models.ForeignKey(Item, on_delete=models.CASCADE)
     request_date = models.DateField()
-    status = models.CharField(max_length=50)
+    status = models.CharField(max_length=50,choices=[("pending","pendind"),("issued","issued"),('returned','returned')])
 
     def __str__(self):
         return f"Request {self.id} by {self.user.user_name}"

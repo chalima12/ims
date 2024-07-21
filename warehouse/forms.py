@@ -38,6 +38,10 @@ from django.contrib.auth.forms import AuthenticationForm
 class CustomAuthenticationForm(AuthenticationForm):
     username = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Username'}))
     password = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'form-control', 'placeholder': 'Password'}))
+# forms.py
+from django import forms
+from django.forms import modelformset_factory
+from .models import Order
 
 class OrderForm(forms.ModelForm):
     class Meta:
@@ -49,3 +53,19 @@ class OrderForm(forms.ModelForm):
             'order_date': forms.DateInput(attrs={'type': 'date', 'class': 'form-control'}),
             'status': forms.Select(attrs={'class': 'form-control'}),
         }
+
+OrderFormSet = modelformset_factory(Order, form=OrderForm, extra=5, can_delete=True)
+
+
+class MaterialRequestForm(forms.ModelForm):
+    class Meta:
+        model = MaterialRequest
+        user=User.objects.all()
+        fields = ['user', 'item', 'request_date', 'status']
+        widgets = {
+            'user': forms.Select(attrs={'class': 'form-control'}),
+            'item': forms.Select(attrs={'class': 'form-control'}),
+            'request_date': forms.DateInput(attrs={'type': 'date', 'class': 'form-control'}),
+            'status': forms.Select(attrs={'class': 'form-control'}),
+        }
+

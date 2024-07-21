@@ -5,25 +5,25 @@
 
 {% block content %}
 <div class="container mt-5">
-    <h2>Edit Order</h2>
+    <h2>Edit Resquest</h2>
     <form method="post">
         {% csrf_token %}
         {{ form.non_field_errors }}
         <div class="form-group">
-            {{ form.stock.label_tag }} {{ form.stock|add_class:"form-control" }}
-            {% for error in form.stock.errors %}
+            {{ form.user.label_tag }} {{ form.user|add_class:"form-control" }}
+            {% for error in form.user.errors %}
                 <div class="invalid-feedback">{{ error }}</div>
             {% endfor %}
         </div>
         <div class="form-group">
-            {{ form.quantity.label_tag }} {{ form.quantity|add_class:"form-control" }}
-            {% for error in form.quantity.errors %}
+            {{ form.item.label_tag }} {{ form.item|add_class:"form-control" }}
+            {% for error in form.item.errors %}
                 <div class="invalid-feedback">{{ error }}</div>
             {% endfor %}
         </div>
         <div class="form-group">
-            {{ form.order_date.label_tag }} {{ form.order_date|add_class:"form-control" }}
-            {% for error in form.order_date.errors %}
+            {{ form.request_date.label_tag }} {{ form.request_date|add_class:"form-control" }}
+            {% for error in form.request_date.errors %}
                 <div class="invalid-feedback">{{ error }}</div>
             {% endfor %}
         </div>
