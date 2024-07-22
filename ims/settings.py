@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-t_md9+=65m^u56@9+uj!(p1%8-w4yk1@e0i_63wlggfalr(haz
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['172.20.0.143','0.0.0.0','127.0.0.1','localhost']
+ALLOWED_HOSTS = ['172.20.0.139','0.0.0.0','127.0.0.1','localhost','www.ims.com','www.ims.com']
 
 
 # Application definition
@@ -65,6 +65,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'warehouse.context_processors.notifications_processor',
             ],
         },
     },

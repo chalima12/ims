@@ -100,6 +100,16 @@ class Notification(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     message = models.TextField()
     notification_date = models.DateField()
+    read = models.BooleanField(default=False)
+    notification_type = models.CharField(max_length=50, choices=[
+        ('User', 'User'),
+        ('Category', 'Category'),
+        ('Stock', 'Stock'),
+        ('Item', 'Item'),
+        ('Order', 'Order'),
+        ('MaterialRequest', 'MaterialRequest')
+    ],default='MaterialRequest')
 
     def __str__(self):
-        return f"Notification for {self.user.username} - {self.notification_date}"
+        return f"Notification for {self.user.user_name} - {self.notification_date}"
+

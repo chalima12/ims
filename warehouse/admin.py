@@ -61,9 +61,10 @@ class MaterialRequestAdmin(ImportExportModelAdmin):
     list_filter = ('request_date', 'status')
 
 class NotificationAdmin(ImportExportModelAdmin):
-    list_display = ('id', 'user', 'message', 'notification_date')
+    list_display = ('id', 'user', 'message', 'notification_date','read')
     search_fields = ('user__first_name', 'user__last_name', 'message')
-    list_filter = ('notification_date',)
+    list_filter = ('notification_date','read')
+    list_editable=['read']
 
 # Register models with custom admin site
 admin_site.register(Category, CategoryAdmin)
