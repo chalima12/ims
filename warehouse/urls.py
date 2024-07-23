@@ -2,6 +2,7 @@ from.views import *
 from django.urls import path
 from django.contrib.auth import views as auth_views
 urlpatterns = [
+  path('', landing_page, name='landing_page'),
     path('orders/', OrderListView.as_view(), name='order_list'),
     path('orders/add-order/', create_orders, name='add-order'),
     path('orders/edit-order/<int:pk>/', OrderUpdateView.as_view(), name='edit_order'),

@@ -117,6 +117,13 @@ from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from .models import Notification
 
+
+# views.py
+from django.shortcuts import render
+
+def landing_page(request):
+    return render(request, 'landing_page.html')
+
 @csrf_exempt
 
 def mark_notification_as_read(request):

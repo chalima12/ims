@@ -9,6 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>IMS Portal</title>
     <!-- Include your CSS files here -->
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
         /* CSS styles for profile section in navbar */
@@ -244,6 +245,11 @@
                 <div class="container-fluid">
                     {% block content1 %}
                     {% endblock content1 %}
+                    
+                    {% block header %}
+                        
+                    {% endblock header %}
+                        
                     <div class="row mb-2">
                         <div class="col-sm-12">
                             <div class="card">
@@ -408,9 +414,9 @@
     
                 // Add header and divider
                 notificationsContainer.innerHTML += `
-                    <span class="dropdown-item dropdown-header">
-                        Notifications (${data.notifications.length})
-                    </span>
+                     {% comment %} <span class="dropdown-item dropdown-header">
+                        Notifications ($\{data.notifications.length})
+                    </span>  {% endcomment %}
                     <div class="dropdown-divider"></div>
                 `;
     
