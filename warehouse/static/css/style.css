@@ -23,75 +23,10 @@ body {
     border: none;
     border-radius: 10px;
     box-shadow: 0 0 15px rgba(0,0,0,0.1);
-    transition: transform 0.5s ease;
-}
-
-.carousel-item {
-    transition: transform 2s ease, opacity 2s ease;
-}
-
-.carousel-inner .carousel-item-next,
-.carousel-inner .carousel-item-prev,
-.carousel-inner .carousel-item.active {
-    display: block;
-}
-
-.carousel-control-prev,
-.carousel-control-next {
-    width: 5%;
-}
-
-.animate-card {
-    animation: fadeInUp 2s ease-in-out;
-}
-
-@keyframes fadeInUp {
-    0% {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
 }
 
 footer {
     background-color: #333;
     color: white;
     text-align: center;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
 }
-
-
-/* Additional styles for new features */
-.animate-card {
-    animation: fadeInUp 2s ease-in-out;
-}
-
-@keyframes fadeInUp {
-    0% {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.card-body {
-    padding: 20px;
-}
-
-.card-title {
-    font-size: 1.5em;
-    margin-bottom: 10px;
-}
-
-.card-text {
-    font-size: 1em;
-}
-

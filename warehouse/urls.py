@@ -3,6 +3,10 @@ from django.urls import path
 from django.contrib.auth import views as auth_views
 urlpatterns = [
   path('', landing_page, name='landing_page'),
+  
+  path('profile/edit/', EditProfileView.as_view(), name='edit_profile'),
+    path('profile/change-password/', ChangePasswordView.as_view(), name='change_password'),
+    path('logout/', LogoutView.as_view(), name='logout'),
     path('orders/', OrderListView.as_view(), name='order_list'),
     path('orders/add-order/', create_orders, name='add-order'),
     path('orders/edit-order/<int:pk>/', OrderUpdateView.as_view(), name='edit_order'),

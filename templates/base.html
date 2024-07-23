@@ -50,22 +50,23 @@
             <!-- Right navbar links -->
             <ul class="navbar-nav ml-auto">
                 <!-- Profile Dropdown Menu -->
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        {% if user.profile_picture %}
-                        <img class='profile-user-img rounded-circle sm img-fluid' src="{{ user.profile_picture.url }}" alt="Profile Picture">
-                        {% else %}
-                        <i class="fa-solid fa-user"></i>
-                        {% endif %}
-                        <span class="profile-user-name">{{ user.first_name }}</span>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Change Password</a>
-                        <a class="dropdown-item" href="#">Edit Profile</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Logout</a>
-                    </div>
-                </li>
+<li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        {% if user.profile_picture %}
+        <img class="profile-user-img rounded-circle sm img-fluid" src="{{ user.profile_picture.url }}" alt="Profile Picture">
+        {% else %}
+        <i class="fa-solid fa-user"></i>
+        {% endif %}
+        <span class="profile-user-name">{{ user.first_name }}</span>
+    </a>
+    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+        <a class="dropdown-item" href="#">Change Password</a>
+        <a class="dropdown-item" href="{% url 'edit_profile' %}">Edit Profile</a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" href="#">Logout</a>
+    </div>
+</li>
+
                 
                 
                  <!-- Notifications Dropdown Menu -->
