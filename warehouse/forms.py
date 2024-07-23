@@ -3,6 +3,7 @@ from django.forms import ModelForm
 from .models import *
 from django.core.exceptions import ValidationError
 
+from django.contrib.auth.forms import UserChangeForm, PasswordChangeForm
 class UserForm(ModelForm):
     # user_name=forms.EmailField(widget=forms.EmailInput,label='Your Email')
     # pass_word=forms.CharField(widget=forms.PasswordInput)
@@ -31,7 +32,19 @@ class UserForm(ModelForm):
         if commit:
             user.save()
         return user
-# forms.py
+    
+    
+    
+class EditUserForm(UserChangeForm):
+    class Meta:
+        model = User
+        fields = ['first_name', 'last_name', 'email', 'profile_picture']    
+
+class CustomPasswordChangeForm(PasswordChangeForm):
+    old_password = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'form-control', 'placeholder': 'Current Password'}))
+    new_password1 = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'form-control', 'placeholder': 'New Password'}))
+    new_password2 = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'form-control', 'placeholder': 'Confirm New Password'}))
+
 
 from django.contrib.auth.forms import AuthenticationForm
 

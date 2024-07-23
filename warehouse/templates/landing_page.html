@@ -1,0 +1,183 @@
+{% extends 'base.html' %}
+<!DOCTYPE html>
+{% load static %}
+
+{% block header %}
+<header class="jumbotron text-center">
+    <h1 class="display-4">Welcome to the Inventory Management System</h1>
+    <p class="lead">Your all-in-one solution for managing stocks, orders, and requests</p>
+</header>
+{% endblock header %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-12">
+        <div id="featureCarousel" class="carousel slide" data-ride="carousel" data-interval="5000">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <div class="d-flex justify-content-center align-items-center">
+                        <div class="card animate-card">
+                            <div class="card-body">
+                                <h5 class="card-title">User Management</h5>
+                                <p class="card-text">
+                                    <strong>User Roles:</strong> 
+                                    A user role represents a specific set of tasks or responsibilities assigned to a group of users within the application.
+                                    Common examples of user roles include:
+                                    <ul>
+                                        <li><strong>Admin:</strong> Complete access rights, allowing management of all aspects of the application such as adding new users, modifying settings, and viewing/editing all content.</li>
+                                        <li><strong>Supervisor:</strong> Manages content created by other users but may not have full administrative privileges.</li>
+                                        <li><strong>User:</strong> Able to create content and view their own content but not content created by others.</li>
+                                    </ul>
+                                    <strong>Permissions:</strong>
+                                    Permissions determine the specific actions individual users are allowed or disallowed to take when interacting with the application.
+                                    Examples of permissions include:
+                                    <ul>
+                                        <li><strong>Create:</strong> Allows users to add new content or resources.</li>
+                                        <li><strong>Read:</strong> Permits users to view existing content without making changes.</li>
+                                        <li><strong>Update:</strong> Grants permission for users to edit and make changes to existing content.</li>
+                                        <li><strong>Delete:</strong> Provides authority for removing content from the system entirely.</li>
+                                    </ul>
+                                    <strong>Significance of User Roles and Permissions:</strong>
+                                    <ul>
+                                        <li><strong>Improved Security:</strong> Assigning specific privileges based on user roles helps maintain secure access control within the application.</li>
+                                        <li><strong>Efficiency:</strong> Streamlining workflows by assigning roles ensures that users have appropriate access levels for their job functions.</li>
+                                        <li><strong>Scalability:</strong> Role-based access management allows better scalability as your organization grows.</li>
+                                        <li><strong>Compliance:</strong> Properly managing roles and permissions keeps you compliant with privacy regulations.</li>
+                                    </ul>
+                                    Additionally, each user can have a profile picture to personalize their profile, and different permissions can be assigned to control access and ensure security across the system.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="d-flex justify-content-center align-items-center">
+                        <div class="card animate-card">
+                            <div class="card-body">
+                                <h5 class="card-title">Categories & Stocks</h5>
+                                <p class="card-text">
+                                    <strong>Categories:</strong>
+                                    Organize your inventory with categories to manage and track different types of items efficiently. Each category can have a name and description, allowing for easy identification and classification of items.
+                                    <br><br>
+                                    <strong>Stocks:</strong>
+                                    Each stock item belongs to a category and has a unique stock number and description. Track current stock levels to ensure your inventory is well-managed and up-to-date. Keep detailed records of stock movements, additions, and depletions.
+                                    <ul>
+                                        <li><strong>Current Level:</strong> Monitor the available quantity of each stock item.</li>
+                                        <li><strong>Stock Number:</strong> Unique identifier for each stock item.</li>
+                                        <li><strong>Description:</strong> Detailed information about the stock item.</li>
+                                    </ul>
+                                    This functionality helps maintain accurate inventory records and supports efficient stock management.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="d-flex justify-content-center align-items-center">
+                        <div class="card animate-card">
+                            <div class="card-body">
+                                <h5 class="card-title">Items & Orders</h5>
+                                <p class="card-text">
+                                    <strong>Items:</strong>
+                                    Maintain detailed records of items within stocks, including their name, description, and price. This ensures that each item is well-documented and easily traceable.
+                                    <ul>
+                                        <li><strong>Name:</strong> The name of the item.</li>
+                                        <li><strong>Description:</strong> Detailed information about the item.</li>
+                                        <li><strong>Price:</strong> The cost of the item, allowing for financial tracking and inventory valuation.</li>
+                                    </ul>
+                                    <br>
+                                    <strong>Orders:</strong>
+                                    Manage orders efficiently by tracking their status from pending to shipped. This functionality supports the order fulfillment process, ensuring timely delivery and accurate order management.
+                                    <ul>
+                                        <li><strong>Quantity:</strong> The number of items ordered.</li>
+                                        <li><strong>Order Date:</strong> The date when the order was placed.</li>
+                                        <li><strong>Status:</strong> Track the order status to manage fulfillment processes efficiently.</li>
+                                    </ul>
+                                    Efficient tracking of orders and inventory levels ensures smooth operations and customer satisfaction.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="d-flex justify-content-center align-items-center">
+                        <div class="card animate-card">
+                            <div class="card-body">
+                                <h5 class="card-title">Material Requests</h5>
+                                <p class="card-text">
+                                    <strong>Request Materials:</strong>
+                                    Allow users to request materials as needed. Track the status of each request from pending to issued or returned. This functionality streamlines the process of requesting and issuing materials within your organization.
+                                    <ul>
+                                        <li><strong>User:</strong> The user requesting the material.</li>
+                                        <li><strong>Item:</strong> The item being requested.</li>
+                                        <li><strong>Request Date:</strong> The date when the request was made.</li>
+                                        <li><strong>Status:</strong> Track the request status to ensure efficient handling and processing.</li>
+                                    </ul>
+                                    This process ensures that materials are available when needed and that requests are managed efficiently.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="d-flex justify-content-center align-items-center">
+                        <div class="card animate-card">
+                            <div class="card-body">
+                                <h5 class="card-title">Notifications</h5>
+                                <p class="card-text">
+                                    <strong>Notifications:</strong>
+                                    Keep users informed with notifications related to users, categories, stocks, items, orders, and material requests. Ensure timely updates and improve communication within your organization.
+                                    <ul>
+                                        <li><strong>User:</strong> Notify users about important updates and changes.</li>
+                                        <li><strong>Category:</strong> Inform about changes or updates in categories.</li>
+                                        <li><strong>Stock:</strong> Update stock levels and stock movements.</li>
+                                        <li><strong>Item:</strong> Notify about new items, price changes, or descriptions.</li>
+                                        <li><strong>Order:</strong> Track order statuses and notify relevant users.</li>
+                                        <li><strong>Material Request:</strong> Keep users informed about the status of their material requests.</li>
+                                    </ul>
+                                    Timely notifications help in maintaining clear communication and ensuring that all stakeholders are aware of relevant updates and actions.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <a class="carousel-control-prev" href="#featureCarousel" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#featureCarousel" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    // scripts.js
+$(document).ready(function() {
+    $('#featureCarousel').on('slide.bs.carousel', function (e) {
+        var $e = $(e.relatedTarget);
+        var idx = $e.index();
+        var itemsPerSlide = 1;
+        var totalItems = $('.carousel-item').length;
+      
+        if (idx >= totalItems-(itemsPerSlide-1)) {
+            var it = itemsPerSlide - (totalItems - idx);
+            for (var i=0; i<it; i++) {
+                // append slides to end
+                if (e.direction=="left") {
+                    $('.carousel-item').eq(i).appendTo('.carousel-inner');
+                }
+                else {
+                    $('.carousel-item').eq(0).appendTo('.carousel-inner');
+                }
+            }
+        }
+    });
+});
+
+</script>
+{% endblock content %}

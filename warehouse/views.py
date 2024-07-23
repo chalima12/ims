@@ -4,6 +4,13 @@ from .forms import*
 from .models import*
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views.generic.edit import UpdateView
+from django.contrib.auth import update_session_auth_hash
+from django.contrib.auth.forms import PasswordChangeForm
+from django.contrib.auth.views import LogoutView as DjangoLogoutView
+from django.urls import reverse_lazy
+from .models import User
+from .forms import UserForm
 
 
 # views.py
@@ -117,6 +124,13 @@ from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from .models import Notification
 
+
+# views.py
+from django.shortcuts import render
+
+def landing_page(request):
+    return render(request, 'landing_page.html')
+
 @csrf_exempt
 
 def mark_notification_as_read(request):
@@ -153,3 +167,24 @@ def fetch_notifications(request):
 
 
 
+class EditProfileView(UpdateView):
+    model = User
+    form_class = EditUserForm
+    template_name = 'edit_profile.html'
+    success_url = reverse_lazy('landing_page')  # Redirect to home or any other page
+
+    def get_object(self):
+        return self.request.user
+
+class ChangePasswordView(UpdateView):
+    form_class = PasswordChangeForm
+    template_name = 'change_password.html'
+    success_url = reverse_lazy('landing_page')  # Redirect to home or any other page
+
+    def form_valid(self, form):
+        user = form.save()
+        update_session_auth_hash(self.request, user)  # Keep the user logged in
+        return super().form_valid(form)
+
+class LogoutView(DjangoLogoutView):
+    next_page = reverse_lazy('landing_page')  # Redirect to home or any other pag
